@@ -6,7 +6,7 @@ import { Directive, ElementRef, Renderer } from '@angular/core';
 
 export class HighLightDirective {
   constructor(private el: ElementRef, private renderer: Renderer) {
-    this.hightlight("blue");
+    this.hightlight("orange");
   }
 
   private hightlight(color: string) {
