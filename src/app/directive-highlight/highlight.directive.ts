@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
+import { Directive, ElementRef, Renderer, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[fraHightLight]',
@@ -8,11 +8,15 @@ import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
 })
 
 export class HighLightDirective {
+
+  @Input("fraHightLight") hightLightColor: string;
+  private _defaultColor: string = "yellow";
+
   constructor(private el: ElementRef, private renderer: Renderer) {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.hightlight('yellow');
+    this.hightlight(this.hightLightColor || this._defaultColor);
   }
 
   @HostListener('mouseleave') onMouseLeave() {
@@ -25,7 +29,6 @@ export class HighLightDirective {
 
   private hightlight(color: string) {
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', color);
-    this.renderer.setElementStyle(this.el.nativeElement, 'color','red');
     this.renderer.setElementStyle(this.el.nativeElement, 'cursor','pointer');
   }
 }
