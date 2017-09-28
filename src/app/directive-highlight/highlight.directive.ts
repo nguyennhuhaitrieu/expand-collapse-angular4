@@ -10,13 +10,13 @@ import { Directive, ElementRef, Renderer, HostListener, Input } from '@angular/c
 export class HighLightDirective {
 
   @Input("fraHightLight") hightLightColor: string;
-  private _defaultColor: string = "yellow";
+  @Input("defaultColor") defaultColor: string = "yellow";
 
   constructor(private el: ElementRef, private renderer: Renderer) {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.hightlight(this.hightLightColor || this._defaultColor);
+    this.hightlight(this.hightLightColor || this.defaultColor);
   }
 
   @HostListener('mouseleave') onMouseLeave() {

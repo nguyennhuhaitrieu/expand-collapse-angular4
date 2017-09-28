@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+.is-favorite {
+  padding: 5px 10px;
+  background-color: #B4FAD1;
+}
+
+.is-hovering {
+  font-weight: bold;
+}
