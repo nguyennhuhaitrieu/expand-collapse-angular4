@@ -1,12 +1,26 @@
-import { Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[fraHightLight]'
+  selector: '[fraHightLight]',
+  host: {
+    '(click)' : 'onClick($event)'
+  }
 })
 
 export class HighLightDirective {
   constructor(private el: ElementRef, private renderer: Renderer) {
-    this.hightlight("orange");
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.hightlight('yellow');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.hightlight(null);
+  }
+
+  onClick($event) {
+    console.log($event.target.innerText);
   }
 
   private hightlight(color: string) {
